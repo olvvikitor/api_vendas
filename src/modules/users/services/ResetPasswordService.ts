@@ -34,7 +34,7 @@ class ResetPasswordService{
     const hashedPassword = await hash(password, 8);
     user.password = hashedPassword;
 
-    // const token = await userTokenRepository.generateToken(user.id);
-    console.log(token)
+    userRepository.save(user);
   }
 }
+export default ResetPasswordService;
