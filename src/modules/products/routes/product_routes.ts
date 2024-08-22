@@ -13,10 +13,10 @@ productRouter.post('/',celebrate({
     quantity: Joi.number().required()
   }),
   
-}), productControler.createProduct);
+}), auth ,productControler.createProduct);
 
 //Busca por todos os Products
-productRouter.get('/', auth,productControler.findAll);
+productRouter.get('/',productControler.findAll);
 
 //Busca por um produto
 productRouter.get('/:name',celebrate({
@@ -32,11 +32,11 @@ productRouter.put('/:id',celebrate({
     quantity: Joi.number().optional()
   })
  
-}), productControler.updateProduct);
+}), auth ,productControler.updateProduct);
 
 productRouter.delete('/:id',celebrate({
   [Segments.PARAMS]: Joi.string().uuid().required()
  
-}), productControler.deleteProduct);
+}), auth ,productControler.deleteProduct);
 
 export default productRouter;

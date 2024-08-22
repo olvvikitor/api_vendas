@@ -4,10 +4,17 @@ import userRouter from '@modules/users/routes/userRoutes';
 import sessionRouter from '@modules/users/routes/sessionRoutes';
 import passwordRouter from '@modules/users/routes/passwordRoutes';
 import { auth } from '../middleweres/auth';
+import profileRouter from '@modules/users/routes/profileRouter';
 export const routes = Router();
 
 routes.use('/products', productRouter);
+
 routes.use('/users', userRouter);
-routes.use('/auth', sessionRouter)
-routes.use('/password',auth, passwordRouter);
+
+routes.use('/auth', sessionRouter);
+
+routes.use('/password', passwordRouter);
+
+routes.use('/profile', profileRouter)
+
  export default routes;

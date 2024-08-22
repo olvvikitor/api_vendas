@@ -3,7 +3,9 @@ import { celebrate,Joi, Segments } from 'celebrate';
 import SessionControler from '../controllers/SessionsControllerController';
 import ForgotPasswordController from '../controllers/ForgotPasswordController';
 import ResetPasswordController from '../controllers/ResetPasswordController';
+import { auth } from '@shared/http/middleweres/auth';
 const passwordRouter = Router();
+passwordRouter.use(auth)
 const forgotPasswordController = new ForgotPasswordController;
 const resetPasswordController= new ResetPasswordController
 

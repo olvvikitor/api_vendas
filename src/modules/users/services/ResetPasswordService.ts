@@ -14,7 +14,6 @@ interface Irequest{
 
 class ResetPasswordService{
   public async execute({password,token}:Irequest): Promise<UserToken| void>{
-    // Implement the email sending logic here
     const userRepository = getCustomRepository(UserRepository)
     const userTokenRepository = getCustomRepository(UserTokenRepository)
 
