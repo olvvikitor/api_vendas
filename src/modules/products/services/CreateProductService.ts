@@ -19,7 +19,7 @@ class CreateProductService {
       throw new AppError("Product already exists", 500);
     }
     const product = productRepository.create({ name, price, quantity });
-      productRepository.createProduct(product);
+    productRepository.createProduct(product);
      return product;
   }
 }
