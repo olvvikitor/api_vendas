@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import OrderProducts from '@modules/orders/typeorm/entities/OrdersProducts';
+import { Column, CreateDateColumn, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('products')
 class Product{
@@ -9,6 +10,11 @@ class Product{
   @Column()
   name: string;
 
+  @OneToMany(()=>OrderProducts, orderProducts => orderProducts.product, {
+    cascade: true
+  })
+  orderProducts: OrderProducts[]
+  
   @Column('decimal')
   price: number;
 
@@ -22,5 +28,3 @@ class Product{
   updated_at: Date;
 }
 export default Product;
-
-// c:\Users\Jussara\OneDrive\Área de Trabalho\TS\src\modules\products\repositories\ProductRepository.ts

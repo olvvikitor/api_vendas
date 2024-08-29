@@ -19,7 +19,6 @@ class ProductController{
 
   }
   public async findAll(request:Request, response:Response):Promise<Response>{
-    console.log(request.user.id)
     const listProducts = new ListProductService;
     const products = await listProducts.execute();
     return response.status(200).json(products);
