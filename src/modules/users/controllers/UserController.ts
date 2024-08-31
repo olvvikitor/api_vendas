@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import {instanceToInstance} from 'class-transformer';
 import CreateUserService from '../services/CreateUserService';
 import ListAllUserService from '../services/ListAllUserService';
 import CreateSessionService from '../services/CreateSessionService';
@@ -14,21 +15,21 @@ class UserController {
       email,
       password,
   });
-  return response.status(200).json(user);
+  return response.status(200).json(instanceToInstance(user));
   }
   public async listAllUsers(request: Request, response: Response):Promise<Response>{
     const listUser = new ListAllUserService;
     const users = await listUser.execute();
 
-    return response.status(200).json(users);
-    }
+    return response.status(200).json(instanceToInstance(users));
+  }
 
     public async showProfile(request: Request, response: Response): Promise<Response>{
       const showProfileUserService = new ShowProfileUserService;
       const id = request.user.id;
       const profile =  await showProfileUserService.execute({user_id: id})
 
-      return response.status(200).json(profile);
+      return response.status(200).json(instanceToInstance(profile));
     }
 
     public async updateProfile(request: Request, response: Response): Promise<Response>{
@@ -36,7 +37,7 @@ class UserController {
       const {name, email, password, old_password} = request.body;
       const id = request.user.id;
       const profile = await updateProfileUserService.execute({user_id: id, name, email, password, old_password});
-      return response.status(200).json(profile);
+      return response.status(200).json(instanceToInstance(profile));
     }
   }
 export default UserController;

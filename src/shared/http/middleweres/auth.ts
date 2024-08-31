@@ -2,7 +2,7 @@ import jwt, { Secret, JwtPayload } from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
 import AppError from '@shared/errors/AppError';
 
-export const SECRET_KEY: Secret = 'eyJhbGciOiJIUzUxMiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTcyNDExMjE3MCwiaWF0IjoxNzI0MTEyMTcwfQ.4kEvFID0DO40_y7MKKnKtMzjQACp6ud99Uu-gbmzR9UAw68H-HpP-Q7iwMoTUtEYUFadiaOmAQf2sbT4j42-tA'
+export const SECRET_KEY: Secret = process.env.APP_SECRET as string;
 
 
 
